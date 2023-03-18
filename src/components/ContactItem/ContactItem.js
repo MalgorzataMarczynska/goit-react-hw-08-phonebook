@@ -1,8 +1,8 @@
 import css from './ContactItem.module.css';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectArray } from 'redux/selectors';
-import { removeContact } from 'redux/operations.js';
+import { selectArray } from 'redux/contacts/selectors';
+import { removeContact } from 'redux/contacts/operations.js';
 
 export const ContactItem = () => {
   const dispatch = useDispatch();
@@ -12,7 +12,7 @@ export const ContactItem = () => {
     <>
       {array.map(contact => (
         <li key={contact.id} className={css.listItem}>
-          {contact.name}: {contact.phone}
+          {contact.name}: {contact.number}
           <button
             type="button"
             className={css.button}

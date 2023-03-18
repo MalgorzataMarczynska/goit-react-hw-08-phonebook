@@ -1,43 +1,58 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect, lazy } from 'react';
+import { useDispatch } from 'react-redux';
 import { FallingLines } from 'react-loader-spinner';
-import { Filter } from './filter/Filter.js';
-import { ContactList } from './ContactList/ContactList.js';
-import { ContactItem } from './ContactItem/ContactItem.js';
-import { ContactForm } from './ContactForm/ContactForm.js';
-import { fetchContacts } from 'redux/operations.js';
-import { selectIsLoading, selectError } from 'redux/selectors.js';
+import { Layout } from './Layout/Layout';
+import { Route, Routes } from 'react-router-dom';
+import { PrivateRoute } from './PrivateRoute';
+import { RestrictedRoute } from './RestrictedRoute';
+import { refreshUser } from 'redux/auth/operations';
+import { useAuth } from 'hooks';
+const HomePage = lazy(() => import('../pages/Home/Home.js'));
+const RegisterPage = lazy(() => import('../pages/Register/Register.js'));
+const LoginPage = lazy(() => import('../pages/Login/Login.js'));
+const ContactsPage = lazy(() => import('../pages/Contacts/Contacts.js'));
 
 export const App = () => {
   const dispatch = useDispatch();
-  const isLoading = useSelector(selectIsLoading);
-  const error = useSelector(selectError);
+  const { isRefreshing } = useAuth();
 
   useEffect(() => {
-    dispatch(fetchContacts());
+    dispatch(refreshUser());
   }, [dispatch]);
 
-  return (
-    <div>
-      <h1 className="main-title">Phonebook</h1>
-      <section>
-        <ContactForm />
-        {isLoading && !error && (
-          <FallingLines
-            color="#3f51b5"
-            width="50"
-            visible={true}
-            ariaLabel="falling-lines-loading"
-          />
-        )}
-      </section>
-      <section>
-        <h2 className="title">Contacts</h2>
-        <Filter />
-        <ContactList>
-          <ContactItem />
-        </ContactList>
-      </section>
-    </div>
+  return isRefreshing ? (
+    <FallingLines
+      color="#3f51b5"
+      width="50"
+      visible={true}
+      ariaLabel="falling-lines-loading"
+    />
+  ) : (
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<HomePage />} />
+        <Route
+          path="/register"
+          element={
+            <RestrictedRoute
+              redirectTo="/contacts"
+              component={<RegisterPage />}
+            />
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <RestrictedRoute redirectTo="/contacts" component={<LoginPage />} />
+          }
+        />
+        <Route
+          path="/contacts"
+          element={
+            <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
+          }
+        />
+      </Route>
+    </Routes>
   );
 };
