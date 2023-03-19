@@ -7,6 +7,7 @@ import { ContactItem } from 'components/ContactItem/ContactItem.js';
 import { ContactForm } from 'components/ContactForm/ContactForm.js';
 import { fetchContacts } from 'redux/contacts/operations.js';
 import { selectIsLoading, selectError } from 'redux/contacts/selectors.js';
+import css from './Contacts.module.css';
 const Contacts = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
@@ -16,9 +17,9 @@ const Contacts = () => {
     dispatch(fetchContacts());
   }, [dispatch]);
   return (
-    <>
+    <div className={css.container}>
       <section>
-        <h1 className="main-title">Phonebook</h1>
+        <h2 className={css.title}>Add contact to your phonebook</h2>
         <ContactForm />
         {isLoading && !error && (
           <FallingLines
@@ -30,13 +31,13 @@ const Contacts = () => {
         )}
       </section>
       <section>
-        <h2 className="title">Contacts</h2>
+        <h2 className={css.title}>Your contacts</h2>
         <Filter />
         <ContactList>
           <ContactItem />
         </ContactList>
       </section>
-    </>
+    </div>
   );
 };
 export default Contacts;

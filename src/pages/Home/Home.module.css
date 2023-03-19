@@ -1,0 +1,20 @@
+.container {
+  padding: 2em 2em;
+}
+.title {
+  color: rgb(0, 0, 170);
+  font-size: 26px;
+  margin-bottom: 2em;
+}
+.text {
+  font-size: 17px;
+  color: rgb(66, 66, 66);
+  line-height: 1.25;
+  margin-bottom: 2em;
+}
+.cheer {
+  font-size: 18px;
+  color: rgb(0, 0, 170);
+  line-height: 1.25;
+  margin-top: 3em;
+}

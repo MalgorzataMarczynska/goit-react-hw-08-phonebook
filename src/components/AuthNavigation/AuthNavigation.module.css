@@ -1,0 +1,14 @@
+.link {
+  font-size: 20px;
+  color: white;
+  font-weight: 500;
+  padding: 0 2em;
+  text-decoration: none;
+}
+.link:hover,
+.link:focus {
+  color: lightgray;
+}
+.link .active {
+  color: rgb(106, 145, 243);
+}

@@ -1,11 +1,11 @@
 import { Outlet } from 'react-router-dom';
-//import { Toaster } from 'react-hot-toast';
 import { Header } from '../Header/Header';
 import { Suspense } from 'react';
 import { FallingLines } from 'react-loader-spinner';
+import css from './Layout.module.css';
 export const Layout = () => {
   return (
-    <div>
+    <div className={css.container}>
       <Header />
       <Suspense
         fallback={
@@ -19,7 +19,6 @@ export const Layout = () => {
       >
         <Outlet />
       </Suspense>
-      {/* <Toaster position="top-right" reverseOrder={false} /> */}
     </div>
   );
 };

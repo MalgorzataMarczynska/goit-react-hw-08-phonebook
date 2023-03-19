@@ -1,14 +1,21 @@
 .filter {
   display: flex;
   flex-direction: column;
-  max-width: 20vw;
+  align-items: center;
+  justify-content: center;
+  width: 25vw;
+  margin: 0 auto;
 }
 .input {
-  margin-top: 0.5em;
+  margin-bottom: 2em;
   appearance: none;
   border: 1px solid lightgray;
   font-size: 14px;
   border-radius: 5px;
+  padding: 0.5em;
+  font-size: 14px;
+  margin-left: 1em;
+  min-width: 25vw;
 }
 .input:hover,
 .input:focus {
@@ -19,4 +26,7 @@
 }
 .label {
   font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 0.5em;
+  color: rgb(0, 0, 170);
 }
