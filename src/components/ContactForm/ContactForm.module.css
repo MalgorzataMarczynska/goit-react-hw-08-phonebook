@@ -24,7 +24,6 @@
   border-radius: 5px;
   padding: 0.5em;
   font-size: 14px;
-  margin-left: 1em;
   min-width: 25vw;
 }
 .input:hover,
@@ -39,7 +38,7 @@
   border: none;
   border-radius: 10px;
   padding: 0.7em;
-  width: 20vw;
+  width: 27vw;
   margin: 0 auto;
   color: rgb(0, 0, 170);
   font-weight: 700;
