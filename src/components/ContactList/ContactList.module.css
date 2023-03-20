@@ -3,9 +3,9 @@
   flex-direction: column;
   flex-wrap: wrap;
   gap: 0.5em;
-  align-items: first baseline;
-  flex-basis: 45vw;
-  max-height: 45vh;
+  align-items: flex-start;
+  flex-basis: 90vw;
+  max-height: 50vh;
   margin: 0 auto;
   padding: 0 5em;
   list-style-type: square;

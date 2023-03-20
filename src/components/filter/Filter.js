@@ -2,13 +2,17 @@ import css from './Filter.module.css';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { setFilter } from 'redux/contacts/filterSlice';
+import { SearchIcon } from '@chakra-ui/icons';
 
 export const Filter = () => {
   const dispatch = useDispatch();
   const handleFilter = evt => dispatch(setFilter(evt.target.value));
   return (
     <div className={css.filter}>
-      <label className={css.label}>Find contacts by name</label>
+      <label className={css.label}>
+        <SearchIcon boxSize={4} mr={2} />
+        Find contacts by name
+      </label>
       <input
         className={css.input}
         type="text"

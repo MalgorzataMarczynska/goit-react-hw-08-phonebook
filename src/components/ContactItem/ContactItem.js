@@ -3,6 +3,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectArray } from 'redux/contacts/selectors';
 import { removeContact } from 'redux/contacts/operations.js';
+import { DeleteIcon } from '@chakra-ui/icons';
 
 export const ContactItem = () => {
   const dispatch = useDispatch();
@@ -18,6 +19,7 @@ export const ContactItem = () => {
             className={css.button}
             onClick={() => dispatch(removeContact(contact.id))}
           >
+            <DeleteIcon boxSize={3} mr={1} verticalAlign />
             Delete
           </button>
         </li>

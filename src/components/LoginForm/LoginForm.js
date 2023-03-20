@@ -1,3 +1,4 @@
+import { EmailIcon, ViewOffIcon } from '@chakra-ui/icons';
 import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/auth/operations';
 import css from './LoginForm.module.css';
@@ -19,12 +20,17 @@ export const LoginForm = () => {
 
   return (
     <form className={css.form} onSubmit={handleSubmit} autoComplete="off">
-      <label className={css.label}>Email</label>
+      <label className={css.label}>
+        <EmailIcon boxSize={4} mr={2} />
+        Email
+      </label>
       <input className={css.input} type="email" name="email" />
 
-      <label className={css.label}>Password</label>
+      <label className={css.label}>
+        <ViewOffIcon boxSize={4} mr={2} />
+        Password
+      </label>
       <input className={css.input} type="password" name="password" />
-
       <button className={css.button} type="submit">
         Log In
       </button>

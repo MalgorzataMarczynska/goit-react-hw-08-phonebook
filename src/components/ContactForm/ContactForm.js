@@ -2,6 +2,7 @@ import css from './ContactForm.module.css';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { addContact } from 'redux/contacts/operations.js';
+import { PhoneIcon, PlusSquareIcon } from '@chakra-ui/icons';
 
 export const ContactForm = () => {
   const dispatch = useDispatch();
@@ -26,7 +27,9 @@ export const ContactForm = () => {
         title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
         required
       />
-      <label className={css.label}>Number</label>
+      <label className={css.label}>
+        <PhoneIcon boxSize={4} mr={1} /> Number
+      </label>
       <input
         className={css.input}
         type="tel"
@@ -36,7 +39,7 @@ export const ContactForm = () => {
         required
       />
       <button className={css.button} type="submit">
-        Add contact
+        <PlusSquareIcon boxSize={4} mr={1} /> Add contact
       </button>
     </form>
   );

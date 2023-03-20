@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/operations';
+import { EmailIcon, ViewOffIcon } from '@chakra-ui/icons';
 import css from './RegisterForm.module.css';
 
 export const RegisterForm = () => {
@@ -23,10 +24,16 @@ export const RegisterForm = () => {
       <label className={css.label}>Username</label>
       <input className={css.input} type="text" name="name" />
 
-      <label className={css.label}>Email </label>
+      <label className={css.label}>
+        <EmailIcon boxSize={4} mr={2} />
+        Email
+      </label>
       <input className={css.input} type="email" name="email" />
 
-      <label className={css.label}>Password</label>
+      <label className={css.label}>
+        <ViewOffIcon boxSize={4} mr={2} />
+        Password
+      </label>
       <input className={css.input} type="password" name="password" />
 
       <button className={css.button} type="submit">
